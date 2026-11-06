@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Java 面试题库</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect width='20' height='20' rx='5' fill='%23c15f3c'/%3E%3Cg fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' transform='translate(2.5 2.5) scale(.75)'%3E%3Cpath d='M4 8h10v4a5 5 0 0 1-10 0Z'/%3E%3Cpath d='M14 9h1.5a2 2 0 0 1 0 4H14M7 2.5c-.6.8-.6 1.7 0 2.5M10 2.5c-.6.8-.6 1.7 0 2.5'/%3E%3C/g%3E%3C/svg%3E">
+<script>
+  try {
+    const s = JSON.parse(localStorage.getItem("jq.v1") || "{}");
+    const theme = s.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.dataset.font = s.font || "m";
+    if (s.hideNav) document.documentElement.dataset.nav = "off";
+    if (s.hideList) document.documentElement.dataset.list = "off";
+  } catch {}
+</script>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/detail.css">
+<link rel="stylesheet" href="assets/css/home.css">
+<link rel="stylesheet" href="assets/css/views.css">
+<link rel="stylesheet" href="assets/css/motion.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="侧边栏" aria-controls="sidebar" aria-expanded="true" title="收起 / 展开侧边栏 ([)">
+    <svg class="i-side" viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="3.5" width="15" height="13" rx="2.5"/><path d="M7.5 3.5v13"/></svg>
+    <svg class="i-menu" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+  </button>
+  <a class="brand" href="#/" aria-label="返回首页">
+    <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 8h10v4a5 5 0 0 1-10 0Z"/><path d="M14 9h1.5a2 2 0 0 1 0 4H14M7 2.5c-.6.8-.6 1.7 0 2.5M10 2.5c-.6.8-.6 1.7 0 2.5"/></svg></span>
+    <span class="brand-text"><strong>Java 面试题库</strong><small id="bankSummary">离线可用</small></span>
+  </a>
+  <div class="search" id="search">
+    <svg class="search-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg>
+    <input id="searchInput" type="search" placeholder="搜索题目、答案、知识点，如 HashMap 扩容" autocomplete="off"
+      role="combobox" aria-expanded="false" aria-controls="searchResults" aria-label="全库搜索">
+    <kbd class="search-kbd" aria-hidden="true">/</kbd>
+    <div class="search-panel" id="searchPanel" hidden>
+      <p class="search-status" id="searchStatus" aria-live="polite"></p>
+      <ul class="search-results" id="searchResults" role="listbox" aria-label="搜索结果"></ul>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button class="icon-btn" id="reciteBtn" type="button" aria-pressed="false" title="背诵模式：先遮住答案，回忆后再看 (R)">
+      <span class="swap" aria-hidden="true">
+        <svg viewBox="0 0 20 20"><path d="M2 10s3-5.5 8-5.5S18 10 18 10s-3 5.5-8 5.5S2 10 2 10Z"/><circle cx="10" cy="10" r="2.5"/></svg>
+        <svg viewBox="0 0 20 20"><path d="m3 3 14 14M8.3 4.7A8 8 0 0 1 10 4.5c5 0 8 5.5 8 5.5a14 14 0 0 1-2.4 3.1M5.4 6.3A14 14 0 0 0 2 10s3 5.5 8 5.5a8 8 0 0 0 3.6-.9M8.2 8.3a2.5 2.5 0 0 0 3.5 3.5"/></svg>
+      </span>
+      <span class="btn-label">背诵</span>
+    </button>
+    <button class="icon-btn" id="helpBtn" type="button" title="快捷键 (?)" aria-label="快捷键">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="5" width="15" height="10" rx="2"/><path d="M5.5 8h.01M8.5 8h.01M11.5 8h.01M14.5 8h.01M6.5 12h7"/></svg>
+    </button>
+    <button class="icon-btn" id="fontBtn" type="button" title="切换字号">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 16 7.5 4 12 16M4.7 12h5.6M13 16l2.5-6.5L18 16M13.8 14h3.4"/></svg>
+      <span class="btn-label" id="fontLabel">中</span>
+    </button>
+    <button class="icon-btn" id="themeBtn" type="button" title="切换深色 / 浅色" aria-label="切换深色 / 浅色">
+      <span class="swap theme-swap" aria-hidden="true">
+        <svg viewBox="0 0 20 20"><path d="M16 12.5A6.5 6.5 0 0 1 7.5 4a6.5 6.5 0 1 0 8.5 8.5Z"/></svg>
+        <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.4 1.4M14.6 14.6 16 16M4 16l1.4-1.4M14.6 5.4 16 4"/></svg>
+      </span>
+    </button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="导航"></aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="main" id="main" tabindex="-1"></main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<noscript><p class="noscript">本题库需要启用 JavaScript。</p></noscript>
+<script src="data/questions.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/model.js"></script>
+<script src="assets/js/sidebar.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/view-home.js"></script>
+<script src="assets/js/view-chapter.js"></script>
+<script src="assets/js/view-detail.js"></script>
+<script src="assets/js/view-map.js"></script>
+<script src="assets/js/view-routes.js"></script>
+<script src="assets/js/view-review.js"></script>
+<script src="assets/js/view-saved.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

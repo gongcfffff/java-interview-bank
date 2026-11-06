@@ -1,0 +1,135 @@
+/* Windows 上的苹方只有 Regular / Medium：粗体统一落到 Medium，避免浏览器伪粗体发糊 */
+@font-face { font-family: "JQ PingFang"; font-weight: 100 449; src: local("PingFang SC Regular"), local("PingFangSC-Regular"); }
+@font-face { font-family: "JQ PingFang"; font-weight: 450 549; src: local("PingFang SC Medium"), local("PingFangSC-Medium"); }
+@font-face { font-family: "Anthropic Sans"; font-weight: 100 449; src: local("Anthropic Sans"), local("Anthropic Sans Regular"), local("AnthropicSans-Regular"); }
+@font-face { font-family: "Anthropic Sans"; font-weight: 450 900; src: local("Anthropic Sans Medium"), local("AnthropicSans-Medium"); }
+@font-face { font-family: "JQ PingFang"; font-weight: 550 900; src: local("PingFang SC Semibold"), local("PingFangSC-Semibold"), local("PingFang SC Medium"), local("PingFangSC-Medium"); }
+
+:root {
+  --bg: #faf9f5;
+  --surface: #ffffff;
+  --surface-2: #f5f4ee;
+  --surface-3: rgba(31, 30, 29, .06);
+  --fill-hover: rgba(31, 30, 29, .1);
+  --hover: rgba(31, 30, 29, .045);
+  --sep: rgba(31, 30, 29, .1);
+  --border: rgba(31, 30, 29, .09);
+  --border-strong: rgba(31, 30, 29, .18);
+  --seg-on: #ffffff;
+  --glass: rgba(250, 249, 245, .8);
+  --text: #141413;
+  --text-2: #3d3d3a;
+  --text-3: #83827a;
+  --primary: #c15f3c;
+  --primary-hover: #ae5332;
+  --primary-soft: rgba(193, 95, 60, .09);
+  --primary-line: rgba(193, 95, 60, .38);
+  --accent-blue: #5b8cc2;
+  --ok: #4f7a2f;
+  --ok-fill: #6f9a4b;
+  --ok-soft: rgba(111, 154, 75, .13);
+  --warn: #a5620c;
+  --warn-fill: #e3a33b;
+  --warn-soft: rgba(227, 163, 59, .13);
+  --warn-line: rgba(227, 163, 59, .4);
+  --danger: #b8432f;
+  --danger-soft: rgba(184, 67, 47, .09);
+  --star: #e3a33b;
+  --code-bg: #fdfcf9;
+  --mark: rgba(227, 163, 59, .32);
+  --shadow-sm: 0 1px 2px rgba(31, 30, 29, .04);
+  --shadow: 0 2px 6px rgba(31, 30, 29, .04), 0 12px 32px rgba(31, 30, 29, .07);
+  --shadow-lg: 0 12px 28px rgba(31, 30, 29, .1), 0 32px 72px rgba(31, 30, 29, .14);
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --top-h: 56px;
+  --side-w: 260px;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --spring: cubic-bezier(.34, 1.4, .64, 1);
+  --font: "Anthropic Sans", -apple-system, BlinkMacSystemFont, "SF Pro Text", "JQ PingFang", "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+  --serif: "Anthropic Serif", "Tiempos Headline", "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, "STSong", serif;
+  --mono: "SF Mono", "JetBrains Mono", "Cascadia Code", Consolas, Menlo, "JQ PingFang", "PingFang SC", monospace;
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --bg: #1a1918;
+  --surface: #262624;
+  --surface-2: #1f1e1d;
+  --surface-3: rgba(250, 249, 245, .08);
+  --fill-hover: rgba(250, 249, 245, .13);
+  --hover: rgba(250, 249, 245, .055);
+  --sep: rgba(250, 249, 245, .09);
+  --border: rgba(250, 249, 245, .08);
+  --border-strong: rgba(250, 249, 245, .18);
+  --seg-on: #45443f;
+  --glass: rgba(26, 25, 24, .8);
+  --text: #f5f4ee;
+  --text-2: #cfcdc4;
+  --text-3: #918f86;
+  --primary: #e0835f;
+  --primary-hover: #e8946f;
+  --primary-soft: rgba(224, 131, 95, .15);
+  --primary-line: rgba(224, 131, 95, .45);
+  --accent-blue: #86aedb;
+  --ok: #9ec27a;
+  --ok-fill: #8db368;
+  --ok-soft: rgba(141, 179, 104, .15);
+  --warn: #f0b95c;
+  --warn-fill: #e3a33b;
+  --warn-soft: rgba(227, 163, 59, .14);
+  --warn-line: rgba(227, 163, 59, .36);
+  --danger: #ec7f68;
+  --danger-soft: rgba(236, 127, 104, .15);
+  --star: #f0b95c;
+  --code-bg: #1f1e1d;
+  --mark: rgba(227, 163, 59, .3);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
+  --shadow: 0 4px 16px rgba(0, 0, 0, .4);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, .6);
+  color-scheme: dark;
+}
+html { font-size: 15px; -webkit-text-size-adjust: 100%; }
+html[data-font="s"] { font-size: 14px; }
+html[data-font="l"] { font-size: 16.5px; }
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, p, ul, ol { margin: 0; }
+h1, h2, h3, h4 { font-weight: 600; letter-spacing: -.012em; }
+.page-title, .hero h1, .qd h2, .flash h2, .chap-title h1, .route-head h2, .node-info h3.t, .section-title, .done h2, .ccard-h h3, .dialog h2 {
+  font-family: var(--serif); font-weight: 500; letter-spacing: -.005em;
+}
+ul, ol { padding: 0; list-style: none; }
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+button:disabled { cursor: default; opacity: .45; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
+svg { flex: none; }
+kbd {
+  display: inline-block; min-width: 1.7em; padding: 0 .45em;
+  border: 1px solid var(--border-strong); border-radius: 5px; background: var(--surface); box-shadow: 0 1px 0 var(--border-strong);
+  color: var(--text-2); font: 500 .72rem/1.6 var(--font); text-align: center;
+}
+mark { background: var(--mark); color: inherit; border-radius: 3px; padding: 0 1px; }
+code { font-family: var(--mono); font-size: .9em; }
+::selection { background: color-mix(in srgb, var(--primary) 25%, transparent); }
+.skip { position: absolute; left: -999px; top: 8px; z-index: 100; padding: 8px 12px; background: var(--surface); border-radius: 8px; }
+.skip:focus { left: 8px; }
+.noscript { padding: 40px; text-align: center; }
+* { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
